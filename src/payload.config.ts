@@ -3,11 +3,14 @@ import path from "path";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { slateEditor } from "@payloadcms/richtext-slate";
-import seoPlugin from "@payloadcms/plugin-seo";
 import { buildConfig } from "payload/config";
 
 import Users from "./collections/Users";
 import Media from "./collections/Media";
+import Contents from "./collections/Contents";
+import Categories from "./collections/Categories";
+import Directors from "./collections/Directors";
+import Work from "./globals/work";
 
 export default buildConfig({
   admin: {
@@ -15,8 +18,8 @@ export default buildConfig({
     bundler: webpackBundler(),
   },
   editor: slateEditor({}),
-  collections: [Users, Media],
-  globals: [],
+  collections: [Users, Media, Contents, Categories, Directors],
+  globals: [Work],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
@@ -24,12 +27,7 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
   },
-  plugins: [
-    seoPlugin({
-      collections: ["products"],
-      uploadsCollection: "media",
-    }),
-  ],
+  plugins: [],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
