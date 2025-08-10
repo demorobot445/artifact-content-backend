@@ -10,7 +10,7 @@ import Media from "./collections/Media";
 import Contents from "./collections/Contents";
 import Categories from "./collections/Categories";
 import Directors from "./collections/Directors";
-import Work from "./globals/work";
+import Work from "./globals/Work";
 
 export default buildConfig({
   admin: {
