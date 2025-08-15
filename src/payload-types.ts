@@ -16,7 +16,11 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  globals: {};
+  globals: {
+    work: Work;
+    about: About;
+    team: Team;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -81,6 +85,7 @@ export interface Category {
 export interface Director {
   id: string;
   name: string;
+  slug?: string | null;
   portfolio: {
     category: string | Category;
     photographyMode?: boolean | null;
@@ -136,6 +141,72 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "work".
+ */
+export interface Work {
+  id: string;
+  portfolio: {
+    category: string | Category;
+    photographyMode?: boolean | null;
+    videoProjects?:
+      | {
+          name: string;
+          vimeoVideo: string;
+          id?: string | null;
+        }[]
+      | null;
+    imageProjects?:
+      | {
+          name: string;
+          image: string | Media;
+          id?: string | null;
+        }[]
+      | null;
+    id?: string | null;
+  }[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about".
+ */
+export interface About {
+  id: string;
+  sections?:
+    | {
+        heading: string;
+        description: string;
+        bullets: {
+          text: string;
+          id?: string | null;
+        }[];
+        video: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team".
+ */
+export interface Team {
+  id: string;
+  members?:
+    | {
+        name: string;
+        position: string;
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 
 

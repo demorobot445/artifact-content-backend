@@ -11,6 +11,8 @@ import Contents from "./collections/Contents";
 import Categories from "./collections/Categories";
 import Directors from "./collections/Directors";
 import Work from "./globals/Work";
+import About from "./globals/About";
+import Team from "./globals/Team";
 
 export default buildConfig({
   admin: {
@@ -19,7 +21,7 @@ export default buildConfig({
   },
   editor: slateEditor({}),
   collections: [Users, Media, Contents, Categories, Directors],
-  globals: [Work],
+  globals: [Work, About, Team],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
