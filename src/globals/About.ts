@@ -18,12 +18,10 @@ const About: GlobalConfig = {
         {
           name: "description",
           type: "text",
-          required: true,
         },
         {
           name: "bullets",
           type: "array",
-          required: true,
           fields: [
             {
               name: "text",
